@@ -26,10 +26,10 @@
 *  	License:
 *  		This program and its source code may be freely used by anyone for any purpose,
 *		but you MUST sight David Chidester as its original author.
-*       You may NOT plagiarize this program and claim it as your own work.
+*       	You may NOT plagiarize this program and claim it as your own work.
 *	  	You may NOT sell this program or charge users for use or possession of it.
 *		You May use it for commercial purposes so long as it is part of a larger commercial product
-*       and you are not selling just this program with minor changes and no added work of your own.
+*       	and you are not selling just this program with minor changes and no added work of your own.
 *  		See the GPL https://www.gnu.org/licenses/
 *
 *	TLDR:
@@ -44,21 +44,37 @@ public class NumeralBaseConverter {
 		else if (args.length > 3)
 			System.out.println("error: too many arguements given");
 		else {
+			boolean validArgs = true;
+			int inputBase = 0;
+			int outputBase = 0;
 			// maing sure bases are numeric values
-			for (int i = 0; i < args[1].length(); i++)
-				if (!(Character.isDigit(args[1].charAt(i))))
-					throw new IllegalArgumentException("error: base must be an integer");
-			for (int i = 0; i < args[2].length(); i++)
-				if (!(Character.isDigit(args[2].charAt(i))))
-					throw new IllegalArgumentException("error: base must be an integer");
+			try {
+				inputBase = Integer.parseInt(args[1]);
+				outputBase = Integer.parseInt(args[2]);
+			} catch (Exception e) {
+				System.out.println("error: base must be an integer");
+				validArgs = false;
+			}
+
 			// converting bases from strings to ints
-			int inputBase = Integer.parseInt(args[1]);
-			int outputBase = Integer.parseInt(args[2]);
-			if (inputBase < 2 || inputBase > 16 || outputBase < 2 || outputBase > 16)
-				throw new IllegalArgumentException("error: base must be between 2 and 16 inclusive");
-			
-			//printing result
-			System.out.println(convertNumBase(args[0], inputBase, outputBase));
+			if ((inputBase < 2 || inputBase > 16 || outputBase < 2 || outputBase > 16) && validArgs) {
+				System.out.println("error: base must be between 2 and 16 inclusive");
+				validArgs = false;
+			}
+
+			// making sure that numeral input is valid
+			try {
+				Integer.parseInt(args[0], inputBase);
+			} catch (Exception e) {
+				if (validArgs) {
+					System.out.println("error: \"" + args[0] + "\" is an invalid numeral format for base " + inputBase);
+				}
+				validArgs = false;
+			}
+
+			// printing result
+			if (validArgs)
+				System.out.println(convertNumBase(args[0], inputBase, outputBase));
 		}
 	}
 
