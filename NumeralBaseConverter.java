@@ -99,59 +99,27 @@ public class NumeralBaseConverter {
 		return outputString.reverse().toString();
 	}
 
-	// Converts an ascii char array to integers
-	// Works with base 16
+	// Converts an ascii char to an integer
+	// Works with bases 2-16
 	private static int asciiToInteger(char asciiChar) {
-		int asciiInt = 0;
-		switch (asciiChar) {
-		case 'A':
-			asciiInt = 10;
-			break;
-		case 'B':
-			asciiInt = 11;
-			break;
-		case 'C':
-			asciiInt = 12;
-			break;
-		case 'D':
-			asciiInt = 13;
-			break;
-		case 'E':
-			asciiInt = 14;
-			break;
-		case 'F':
-			asciiInt = 15;
-			break;
-		default:
-			asciiInt = ((int) asciiChar) - 48; // 48 == '0' in ascii
-		}
+		int asciiInt = (int) asciiChar;
+		if (asciiInt > 47 && asciiInt < 58) // 48 == '0' in ascii
+			asciiInt -= 48; 
+		else if (asciiInt > 64 && asciiInt < 71)
+			asciiInt -= 55;
+		else 
+			System.out.println("error: bad input");
 		return asciiInt;
 	}
 
+	// Converts an ascii integer to an ascii char
+	// Works with bases 2-16
 	private static char integerToAscii(int asciiInt) {
-		char asciiChar = '\0';
-		switch (asciiInt) {
-		case 10:
-			asciiChar = 'A';
-			break;
-		case 11:
-			asciiChar = 'B';
-			break;
-		case 12:
-			asciiChar = 'C';
-			break;
-		case 13:
-			asciiChar = 'D';
-			break;
-		case 14:
-			asciiChar = 'E';
-			break;
-		case 15:
-			asciiChar = 'F';
-			break;
-		default:
-			asciiChar = (char) (asciiInt + 48); // 48 is 0 in ascii
-		}
+		char asciiChar;
+		if (asciiInt < 10)
+			asciiChar = (char) (asciiInt + 48); // 48 == '0' in ascii
+		else
+			asciiChar = (char) (asciiInt + 55); // 10 + 55 = 65 == A in ascii
 		return asciiChar;
 	}
 }
