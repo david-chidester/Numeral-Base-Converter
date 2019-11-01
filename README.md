@@ -1,5 +1,7 @@
 # Numeral-Base-Converter
-A Java program to convert numerals to differnt bases such as binary, decimal, octal, and hexadecimal
+A Java program to convert numerals to differnt bases such as binary, decimal, octal, and hexadecimal.
+This is mostly intended for use as a development tool rather than a standalone application.
+One might find it useful for say, making a programer's calculator or piping this program's output into another program.
 
 # Dependancies
 [Download](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) 
