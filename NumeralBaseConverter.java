@@ -127,4 +127,31 @@ public class NumeralBaseConverter {
 		}
 		return asciiInt;
 	}
+
+	private static char integerToAscii(int asciiInt) {
+		char asciiChar = '\0';
+		switch (asciiInt) {
+		case 10:
+			asciiChar = 'A';
+			break;
+		case 11:
+			asciiChar = 'B';
+			break;
+		case 12:
+			asciiChar = 'C';
+			break;
+		case 13:
+			asciiChar = 'D';
+			break;
+		case 14:
+			asciiChar = 'E';
+			break;
+		case 15:
+			asciiChar = 'F';
+			break;
+		default:
+			asciiChar = (char) (asciiInt + 48); // 48 is 0 in ascii
+		}
+		return asciiChar;
+	}
 }
