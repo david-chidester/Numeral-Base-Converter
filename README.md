@@ -2,8 +2,8 @@
 A Java program to convert numerals to differnt bases such as binary, decimal, octal, and hexadecimal
 
 # Dependancies
-Download the most recent Java Development Kit (JDK)
-[Download Most Recent JDK](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
+[Download](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) 
+the most recent Java Development Kit (JDK)
 
 # Installaton (Linux or Mac)
 Download or clone the repo and cd into the directory
