@@ -43,6 +43,13 @@ public class NumeralBaseConverter {
 			System.out.println("error: too few arguements given");
 		else if (args.length > 3)
 			System.out.println("error: too many arguements given");
+		// testing for bad numeral input beginning with 0s such as 005
+		else if (args[0].charAt(0) == '0'){
+			if (args[0].length() > 1)
+				System.out.println("error: numeral cannot begin with 0");
+			else System.out.println("0");
+		}
+
 		else {
 			boolean validArgs = true;
 			int inputBase = 0;
@@ -90,10 +97,16 @@ public class NumeralBaseConverter {
 		// converting to input base using horner's method
 		for (int i = asciiArray.length - 1; i >= 0; i--)
 			total = (total * inputBase) + asciiArray[i];
+		// for bug when numeral ends in a 0
+		int isZero = numeralArray.length - 1;
+		while (numeralArray[isZero] == '0' && isZero > 0) {
+			total *= inputBase;
+			isZero--;
+		}
 		StringBuilder outputString = new StringBuilder();
 		// convert to output base
 		while (total > 0) {
-			outputString.append(total % outputBase);
+			outputString.append(integerToAscii(total % outputBase));
 			total /= outputBase;
 		}
 		return outputString.reverse().toString();
@@ -104,10 +117,10 @@ public class NumeralBaseConverter {
 	private static int asciiToInteger(char asciiChar) {
 		int asciiInt = (int) asciiChar;
 		if (asciiInt > 47 && asciiInt < 58) // 48 == '0' in ascii
-			asciiInt -= 48; 
+			asciiInt -= 48;
 		else if (asciiInt > 64 && asciiInt < 71)
 			asciiInt -= 55;
-		else 
+		else
 			System.out.println("error: bad input");
 		return asciiInt;
 	}
