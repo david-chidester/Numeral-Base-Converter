@@ -7,7 +7,7 @@ One might find it useful for say, making a programer's calculator or piping this
 [Download](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) 
 the most recent Java Development Kit (JDK)
 
-# Installaton (Linux or Mac)
+# Installation (Linux or Mac)
 Download or clone the repo and cd into the directory
 ```
 git clone https://github.com/dchid/Numeral-Base-Converter.git
